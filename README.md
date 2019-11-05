@@ -5,7 +5,10 @@ A simple Neural Network implementation.
 A project of [The Great Code Club](http://www.greatcodeclub.com/).
 
 
-## Web Worker Neural Network in Browser
+## Web Worker Neural Network Playground in Browser
+
+> playground.tensorflow.org clone
+
 
 You Need: 
 
