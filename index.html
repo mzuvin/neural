@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A Neural Network Playground Tensorflow Clone with Web Workers</title>
+         <!-- main.js -->
+        <script src="./lib/scripts/main.js"></script>
+        <style type="text/css">
+        canvas {
+            background-color: #000;
+        }
+        </style>
+    </head>
+    <body onload="init()">
+    <canvas id='output' class="canvas-css" width='100' height='100'></canvas>
+
+    <canvas id='canvas' class="canvas-css" width='100' height='100'></canvas>
+        <div id="result">iterasyon</div>
+        <div id="saniye">saniye</div>
+        <br/>
+    <script type="text/javascript">
+    
+    var canvas = document.getElementById('output');
+    var ctx = canvas.getContext('2d');
+    self.yuz = [];        
+    w=20;
+    for (var i = 0; i < w  ; i++) {                
+        self.yuz[i] = [];                
+        for (var j = 0; j < w ; j++) {                    
+            self.yuz[i][j] = 0;
+        }
+    }
+    function init() {
+        var lastX, lastY;
+     var pos = { x: 0, y: 0 };
+
+    document.addEventListener('mousemove', draw);
+    document.addEventListener('mousedown', setPosition);
+    document.addEventListener('mouseenter', setPosition);
+    function setPosition(e) {
+     pos.x = e.clientX;
+     pos.y = e.clientY;
+    }
+    function draw(e) {
+        var x=Math.floor(pos.x/5);//100x100 50
+        var y=Math.floor(pos.y/5);
+        //console.log(x+":"+y)
+        ctx.beginPath();
+        color=document.querySelector('input[name="color"]:checked').value;
+        if(color=="1"){
+            ctx.strokeStyle ="#ff0000"
+            if(x<w && y<w && yuz[x][y]==0)
+            self.yuz[y][x]=1
+        }
+        if(color=="0") {
+            ctx.strokeStyle ="#ffff00"
+            if(x<w && y<w && yuz[x][y]==0)
+            self.yuz[y][x]=-1
+        }
+        if (e.buttons !== 1) return;
+
+          ctx.beginPath(); // begin
+          ctx.lineWidth = 5;
+          ctx.lineCap = 'round';
+          ctx.moveTo(pos.x, pos.y); // from
+          setPosition(e);
+          ctx.lineTo(pos.x, pos.y); // to
+          ctx.stroke();
+}
+
+    }//init
+    function data(){
+         console.log(window.yuz);
+    }
+    </script>
+  <input type="radio" id="r1" name="color" value=1 checked="true"> Kirmizi +1 
+  <input type="radio" id="r2" name="color" value=0> Sari -1
+  </br></br>
+  <hr>
+  <input type="radio"  name="act" value=4> Softmax
+  <input type="radio"  name="act" value=1 checked="true"> Sigmoid
+  <input type="radio"  name="act" value=2> TanH
+  <input type="radio"  name="act" value=3> Relu
+   </br></br>
+  <hr>
+  <select id="learningRate">
+        <option>LEARNiNG RATE</option>
+            <option value="0.00001">0.00001</option>
+            <option value="0.0001">0.0001</option>
+            <option value="0.001">0.001</option>
+            <option value="0.003">0.003</option>
+            <option value="0.01">0.01</option>
+            <option value="0.03">0.03</option>
+            <option value="0.1">0.1</option>
+            <option value="0.3">0.3</option>
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="10">10</option>
+    </select>
+    <select id="iterasyon">
+        <option>iterasyon</option>
+            <option value="100000">100bin</option>
+            <option value="10000">10bin</option>
+            <option value="1000">bin</option>
+            <option value="500">500</option>
+            <option value="40000">40bin</option>
+            <option value="50000">50bin</option>
+            <option value="60000">60bin</option>
+            <option value="65000">65bin</option>
+            <option value="15000">15bin</option>
+            <option value="25000">25bin</option>
+            <option value="30000">30bin</option>
+    </select>
+    <hr>
+    <br>
+    <button onclick="loadResult()">RUN</button>
+    <hr>
+    <br>
+    <a href="#" onclick="data()">Canvas data log</a>
+    <br>
+    <h1>A Neural Network Playground</h1>
+    <p>JavaScript ve Web Worker ile yapay sinir aglari uygulamasi</p>
+    <p>Renkleri secin canvasi boyayin daha sonra run'a basin</p>
+    <p>Log'lari gormek icin developer console u acin</p>
+    <h1>Sorunlar</h1>
+    <ul>
+        <li>Tensorflow sitesindeki algoritma farkli o yuzden kisa surede siniflandirma yapamiyor.</li>
+        <li>Siniflandirma yaptiktan sonra canvas a sonucu cizdirme de sorun var</li>
+
+    </ul>
+    <hr>
+    <a href="https://playground.tensorflow.org/">playground.tensorflow.org/</a>
+    </body>
+</html>
