@@ -4,7 +4,21 @@ A simple Neural Network implementation.
 
 A project of [The Great Code Club](http://www.greatcodeclub.com/).
 
-## Installation
+
+## Browser Version
+
+You Need: 
+
+- Local Http Server
+- python -m SimpleHTTPServer 8080
+- run localhost:8080/
+
+## Usage
+
+    http://localhost:8080
+
+
+## NodeJs Installation
 
 You need:
 
