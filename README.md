@@ -5,7 +5,7 @@ A simple Neural Network implementation.
 A project of [The Great Code Club](http://www.greatcodeclub.com/).
 
 
-## Browser Version
+## Web Worker Neural Network in Browser
 
 You Need: 
 
